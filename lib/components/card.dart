@@ -24,7 +24,7 @@ class _NoteCardState extends State<NoteCard> {
 
     return Card(
       elevation: 10,
-      color: Theme.of(context).primaryColor,
+      color: Colors.white,
       child: Container(
         constraints: const BoxConstraints(minHeight: 100),
         padding: const EdgeInsets.all(8),
@@ -39,7 +39,7 @@ class _NoteCardState extends State<NoteCard> {
                 Text(
                   widget.item.title,
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Colors.blue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

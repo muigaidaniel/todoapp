@@ -1,8 +1,6 @@
 const String table= 'items';
 class Fields{
-
   static final List<String>values= [id,title,content,isDone,number,created];
-
   static const String id= '_id';
   static const String title= 'title';
   static const String content= 'content';

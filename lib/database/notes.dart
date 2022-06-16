@@ -60,7 +60,7 @@ class Items {
 
   Future<List<Item>> readAll() async {
     final db = await instance.database;
-    const orderBy = '${Fields.created} ASC';
+    const orderBy = '${Fields.created} DESC';
     final result = await db.query(table, orderBy: orderBy);
     return result.map((json) => Item.fromJson(json)).toList();
   }
