@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '/database/note.dart';
+import '/database/notes.dart';
 
 class NoteCard extends StatefulWidget {
   const NoteCard({
@@ -17,10 +19,12 @@ class NoteCard extends StatefulWidget {
 }
 
 class _NoteCardState extends State<NoteCard> {
+
   bool value=false;
   @override
   Widget build(BuildContext context) {
     final created = DateFormat('d MMM y  kk:mm').format(widget.item.created);
+    final isdone =widget.item.isDone;
 
     return Card(
       elevation: 10,
@@ -52,11 +56,15 @@ class _NoteCardState extends State<NoteCard> {
             ),
             Checkbox(
               value: value,
-              onChanged: (value)=>setState(()=> this.value=value!),
+              onChanged:
+                  (value) async {
+                setState((){
+                  this.value=value!;});debugPrint('$value,${widget.item.isDone}');},
             ),
           ],
         ),
       ),
     );
   }
+
 }

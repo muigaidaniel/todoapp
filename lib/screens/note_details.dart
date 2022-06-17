@@ -74,6 +74,13 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
                   ],
                 ),
               ),
+    floatingActionButton: FloatingActionButton(
+      child: const Icon(Icons.done),
+      onPressed: () async {
+        await Items.instance.delete(widget.noteId);
+        Navigator.of(context).pop();
+      },
+    ),
       );
 
   Widget editButton() => IconButton(
@@ -92,6 +99,8 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
         onPressed: () async {
           await Items.instance.delete(widget.noteId);
           Navigator.of(context).pop();
+
         },
       );
+
 }

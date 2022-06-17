@@ -11,10 +11,10 @@ class AddEditNotePage extends StatefulWidget {
     this.item,
   }) : super(key: key);
   @override
-  _AddEditNotePageState createState() => _AddEditNotePageState();
+  AddEditNotePageState createState() => AddEditNotePageState();
 }
 
-class _AddEditNotePageState extends State<AddEditNotePage> {
+class AddEditNotePageState extends State<AddEditNotePage> {
   final _formKey = GlobalKey<FormState>();
   late int isDone;
   late int number;
@@ -54,7 +54,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       );
 
   Widget buildButton() {
-    final isFormValid = title.isNotEmpty && content.isNotEmpty;
+    final isFormValid = title.isNotEmpty;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: ElevatedButton(
@@ -101,5 +101,15 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     );
 
     await Items.instance.create(item);
+  }
+
+  Future updateItem1() async {
+    final item = widget.item!.copy(
+      isDone: 1,
+      number: number,
+      title: title,
+      content: content,
+    );
+    await Items.instance.update(item);
   }
 }
